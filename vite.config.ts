@@ -3,7 +3,7 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'
 import path from 'path'
-
+import vercel from 'vite-plugin-vercel';
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
@@ -12,7 +12,7 @@ export default defineConfig({
       'app.local.tookey.cloud'
     ]
   },
-  plugins: [react(), tailwindcss(), VitePWA({
+  plugins: [vercel(), react(), tailwindcss(), VitePWA({
     strategies: 'injectManifest',
     srcDir: 'src',
     filename: 'sw.ts',
