@@ -25,6 +25,7 @@ function SliderItem({ mark, x, isDragging, onTap, itemWidth }: SliderItemProps) 
     (latest) => Math.abs((-mark * itemWidth) - latest) / itemWidth
   );
   
+  const slide = useTransform(distance, [0, 1, 2], [12, 6, 0]);
   const scale = useTransform(distance, [0, 1, 2], [1, 0.7, 0.6]);
   const opacity = useTransform(distance, [0, 1, 2, 3], [1, 0.8, 0.5, 0.3]);
   
@@ -39,6 +40,7 @@ function SliderItem({ mark, x, isDragging, onTap, itemWidth }: SliderItemProps) 
       style={{
         width: itemWidth,
         height: 60,
+        y: slide,
         scale,
         opacity,
       }}
@@ -138,7 +140,7 @@ export function TemperatureSlider({ track, value, onChange }: TemperatureSliderP
           {/* Scrollable container */}
           <div 
             ref={containerRef}
-            className="overflow-hidden py-2"
+            className="overflow-hidden py-3 -my-2"
             style={{ 
               width: '100%',
               touchAction: 'pan-y pinch-zoom'
